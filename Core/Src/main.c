@@ -104,7 +104,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   htim3.Instance->CCR1 = 50;	//50% duty cycle
-  htim4.Instance->CCR1 = 50;
+  htim4.Instance->CCR1 = (int)(360 * 50 / 100);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -242,7 +242,7 @@ static void MX_TIM4_Init(void)
   htim4.Instance = TIM4;
   htim4.Init.Prescaler = 0;
   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 168-1;
+  htim4.Init.Period = 336-1;
   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
