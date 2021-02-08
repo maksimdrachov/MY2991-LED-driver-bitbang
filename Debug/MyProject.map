@@ -3306,21 +3306,21 @@ LOAD /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.id
                 0x0000000000000908       0x22 /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.macos64_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
 OUTPUT(MyProject.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000     0xa6a5
+.debug_info     0x0000000000000000     0xa69a
  .debug_info    0x0000000000000000      0x987 Core/Src/MY9221.o
  .debug_info    0x0000000000000987      0xd71 Core/Src/main.o
  .debug_info    0x00000000000016f8      0xc39 Core/Src/stm32f4xx_hal_msp.o
- .debug_info    0x0000000000002331      0x796 Core/Src/stm32f4xx_it.o
- .debug_info    0x0000000000002ac7      0xebd Core/Src/syscalls.o
- .debug_info    0x0000000000003984      0x985 Core/Src/sysmem.o
- .debug_info    0x0000000000004309      0x554 Core/Src/system_stm32f4xx.o
- .debug_info    0x000000000000485d       0x22 Core/Startup/startup_stm32f407vgtx.o
- .debug_info    0x000000000000487f      0x945 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_info    0x00000000000051c4      0xe28 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_info    0x0000000000005fec      0x7b5 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_info    0x00000000000067a1      0x904 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_info    0x00000000000070a5     0x24a9 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_info    0x000000000000954e     0x1157 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_info    0x0000000000002331      0x78b Core/Src/stm32f4xx_it.o
+ .debug_info    0x0000000000002abc      0xebd Core/Src/syscalls.o
+ .debug_info    0x0000000000003979      0x985 Core/Src/sysmem.o
+ .debug_info    0x00000000000042fe      0x554 Core/Src/system_stm32f4xx.o
+ .debug_info    0x0000000000004852       0x22 Core/Startup/startup_stm32f407vgtx.o
+ .debug_info    0x0000000000004874      0x945 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_info    0x00000000000051b9      0xe28 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_info    0x0000000000005fe1      0x7b5 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_info    0x0000000000006796      0x904 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_info    0x000000000000709a     0x24a9 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_info    0x0000000000009543     0x1157 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
 
 .debug_abbrev   0x0000000000000000     0x1927
  .debug_abbrev  0x0000000000000000      0x1b9 Core/Src/MY9221.o
@@ -3505,7 +3505,7 @@ OUTPUT(MyProject.elf elf32-littlearm)
  .debug_str     0x00000000000c4bdd      0x54c Core/Src/stm32f4xx_hal_msp.o
                                       0xc105c (size before relaxing)
  .debug_str     0x00000000000c5129       0xcd Core/Src/stm32f4xx_it.o
-                                      0xc0a7f (size before relaxing)
+                                      0xc0a79 (size before relaxing)
  .debug_str     0x00000000000c51f6     0x11e5 Core/Src/syscalls.o
                                        0x8891 (size before relaxing)
  .debug_str     0x00000000000c63db       0x6b Core/Src/sysmem.o

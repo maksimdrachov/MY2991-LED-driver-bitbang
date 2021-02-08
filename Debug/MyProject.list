@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00020090  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000a6a5  00000000  00000000  000200c0  2**0
+ 12 .debug_info   0000a69a  00000000  00000000  000200c0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 00001927  00000000  00000000  0002a765  2**0
+ 13 .debug_abbrev 00001927  00000000  00000000  0002a75a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 00000a08  00000000  00000000  0002c090  2**3
+ 14 .debug_aranges 00000a08  00000000  00000000  0002c088  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 00000930  00000000  00000000  0002ca98  2**3
+ 15 .debug_ranges 00000930  00000000  00000000  0002ca90  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  000213de  00000000  00000000  0002d3c8  2**0
+ 16 .debug_macro  000213de  00000000  00000000  0002d3c0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   00007be2  00000000  00000000  0004e7a6  2**0
+ 17 .debug_line   00007be2  00000000  00000000  0004e79e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000c841b  00000000  00000000  00056388  2**0
+ 18 .debug_str    000c841b  00000000  00000000  00056380  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  0011e7a3  2**0
+ 19 .comment      0000007b  00000000  00000000  0011e79b  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002fbc  00000000  00000000  0011e820  2**2
+ 20 .debug_frame  00002fbc  00000000  00000000  0011e818  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -2350,11 +2350,11 @@ void TIM3_IRQHandler(void)
  8001074:	b480      	push	{r7}
  8001076:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN TIM3_IRQn 0 */
-  GPIOA->ODR ^= (1<<6);
+  GPIOC->ODR ^= (1<<9);
  8001078:	4b07      	ldr	r3, [pc, #28]	; (8001098 <TIM3_IRQHandler+0x24>)
  800107a:	695b      	ldr	r3, [r3, #20]
  800107c:	4a06      	ldr	r2, [pc, #24]	; (8001098 <TIM3_IRQHandler+0x24>)
- 800107e:	f083 0340 	eor.w	r3, r3, #64	; 0x40
+ 800107e:	f483 7300 	eor.w	r3, r3, #512	; 0x200
  8001082:	6153      	str	r3, [r2, #20]
 
   /* USER CODE END TIM3_IRQn 0 */
@@ -2371,7 +2371,7 @@ void TIM3_IRQHandler(void)
  8001090:	46bd      	mov	sp, r7
  8001092:	f85d 7b04 	ldr.w	r7, [sp], #4
  8001096:	4770      	bx	lr
- 8001098:	40020000 	.word	0x40020000
+ 8001098:	40020800 	.word	0x40020800
  800109c:	20000438 	.word	0x20000438
 
 080010a0 <_read>:

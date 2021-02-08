@@ -57,7 +57,7 @@
 
 /* External variables --------------------------------------------------------*/
 extern TIM_HandleTypeDef htim3;
-extern TIM_HandleTypeDef htim4;
+
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -206,7 +206,7 @@ void SysTick_Handler(void)
 void TIM3_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM3_IRQn 0 */
-  GPIOA->ODR ^= (1<<6);
+  GPIOC->ODR ^= (1<<9);
 
   /* USER CODE END TIM3_IRQn 0 */
   //HAL_TIM_IRQHandler(&htim3);
