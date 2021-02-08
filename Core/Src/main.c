@@ -96,6 +96,9 @@ int CMDArray[16];
 int GrayscaleArray[192];
 int ColorArray[8] = {0,0,0,0,0,0,0,1}; //Make sure length matches selected grayscale!
 
+int TestArray[8]= {1,1,0,0,0,0,0,0};
+short int TestCounter = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -145,9 +148,6 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-  //HAL_TIM_Base_Start_IT(&htim2);
-  //HAL_TIM_Base_Start_IT(&htim3);
-  //HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);		// start the pwm
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
   HAL_TIM_Base_Start_IT(&htim3);
@@ -156,8 +156,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  htim3.Instance->CCR1 = (int)(360 * 50 / 100);	//50% duty cycle
-  htim4.Instance->CCR1 = (int)(360 * 50 / 100);
+  htim3.Instance->CCR1 = (int)(167 * 50 / 100);	//50% duty cycle
+  htim4.Instance->CCR1 = (int)(335 * 50 / 100);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -261,7 +261,7 @@ static void MX_TIM3_Init(void)
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
   sConfigOC.Pulse = 0;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  sConfigOC.OCFastMode = TIM_OCFAST_ENABLE;
   if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
   {
     Error_Handler();
