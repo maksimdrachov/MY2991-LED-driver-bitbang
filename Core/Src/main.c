@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <MY9221.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -32,6 +32,54 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define hspd 	0
+/* HSPD: Iout Tr/Tf select
+ * 0: Iout slow mode
+ * 1: Iout fast mode
+*/
+#define bs 		0
+/* BS: Grayscale resolution select
+ * 0: 8-bit grayscale application
+ * 1: 12-bit grayscale application
+ * 2: 14-bit grayscale application
+ * 3: 16-bit grayscale application
+ */
+#define gck		0
+/* GCK: Internal oscillator frequency select
+ * 0: Original frequency (8.6MHz)
+ * 1: Original frequency/2
+ * 2: Original frequency/4
+ * 3: Original frequency/8
+ * 4: Original frequency/16
+ * 5: Original frequency/64
+ * 6: Original frequency/128
+ * 7: Original frequency/256
+*/
+#define sep		0
+/* SEP: Output waveform select
+ * 0: PY-PWM output waveform (similar to traditional waveform)
+ * 1: APDM output waveform
+*/
+#define osc		0
+/* OSC: Grayscale clock source select
+ * 0: Internal oscillator (8.6MHZ) (internal GCK source)
+ * 1: External clock from GCKI pin (external GCK source)
+*/
+#define pol		0
+/* POL: Output polarity select
+ * 0: work as LED driver
+ * 1: work as MY-PWM/APDM generator
+*/
+#define cntset	0
+/* CNTSET: Counter reset select
+ * 0: free running mode
+ * 1: counter reset mode (only usable when osc = '1')
+*/
+#define onest	0
+/* ONEST: One-shot select
+ * 0: frame cycle repeat mode
+ * 1: frame cycle one-shot mode (only usable when cntset = '1')
+*/
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -44,6 +92,9 @@ TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim4;
 
 /* USER CODE BEGIN PV */
+int CMDArray[16];
+int GrayscaleArray[192];
+int ColorArray[8] = {0,0,0,0,0,0,0,1}; //Make sure length matches selected grayscale!
 
 /* USER CODE END PV */
 
@@ -77,6 +128,8 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
+  CMDArray_Init(CMDArray, hspd, bs, gck, sep, osc, pol, cntset, onest);
+  Grayscale_Init(GrayscaleArray, bs, ColorArray);
 
   /* USER CODE END Init */
 
@@ -98,6 +151,7 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);		// start the pwm
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
   HAL_TIM_Base_Start_IT(&htim3);
+  HAL_TIM_Base_Start_IT(&htim4);
 
   /* USER CODE END 2 */
 
