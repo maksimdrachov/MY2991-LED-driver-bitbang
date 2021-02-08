@@ -103,7 +103,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  htim3.Instance->CCR1 = 50;	//50% duty cycle
+  htim3.Instance->CCR1 = (int)(360 * 50 / 100);	//50% duty cycle
   htim4.Instance->CCR1 = (int)(360 * 50 / 100);
   while (1)
   {
@@ -183,7 +183,7 @@ static void MX_TIM3_Init(void)
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 0;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 84-1;
+  htim3.Init.Period = 168-1;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
@@ -312,13 +312,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-	if (htim == &htim3)
-	{
-		GPIOC->ODR ^= (1<<9);
-	}
-}
 
 /* USER CODE END 4 */
 
