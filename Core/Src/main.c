@@ -94,7 +94,7 @@ TIM_HandleTypeDef htim4;
 /* USER CODE BEGIN PV */
 int CMDArray[16];
 int GrayscaleArray[192];
-int ColorArray[8] = {0,0,0,0,0,0,0,1}; //Make sure length matches selected grayscale!
+int ColorArray[8] = {0,0,1,0,0,0,0,0}; //Make sure length matches selected grayscale!
 //int DataArray[208];
 int InputArray[208];
 short int InputCounter = 0;
@@ -125,7 +125,6 @@ static void MX_TIM4_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  //int DataArray[208];
 
   /* USER CODE END 1 */
 
@@ -163,14 +162,97 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   htim3.Instance->CCR1 = (int)(167 * 50 / 100);	//50% duty cycle
   htim4.Instance->CCR1 = (int)(335 * 50 / 100);
+
+  //__disable_irq();
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	//GPIOC->ODR ^= (1<<8);
-	//GPIOC->ODR ^= (1<<9);
-	;
+
+	if (InputCounter == 0)
+	{
+		__disable_irq();
+		GPIOC->BSRR = (1<<25);
+		HAL_TIM_PWM_Stop(&htim4, TIM_CHANNEL_1);
+		GPIOD->ODR &= ~(1<<12);
+		//HAL_Delay(2);
+		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+		DWT->CYCCNT = 0;
+		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+		while ((DWT->CYCCNT) < 40000)
+		{
+			;
+		}
+		//Toggle PC9 4 times;
+		GPIOC->BSRR = (1<<9);
+		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+		DWT->CYCCNT = 0;
+		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+		while ((DWT->CYCCNT) < 100)
+		{
+			;
+		}
+		GPIOC->BSRR = (1<<25);
+		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+		DWT->CYCCNT = 0;
+		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+		while ((DWT->CYCCNT) < 100)
+		{
+			;
+		}
+		GPIOC->BSRR = (1<<9);
+		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+		DWT->CYCCNT = 0;
+		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+		while ((DWT->CYCCNT) < 100)
+		{
+			;
+		}
+		GPIOC->BSRR = (1<<25);
+		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+		DWT->CYCCNT = 0;
+		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+		while ((DWT->CYCCNT) < 100)
+		{
+			;
+		}
+		GPIOC->BSRR = (1<<9);
+		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+		DWT->CYCCNT = 0;
+		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+		while ((DWT->CYCCNT) < 100)
+		{
+			;
+		}
+		GPIOC->BSRR = (1<<25);
+		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+		DWT->CYCCNT = 0;
+		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+		while ((DWT->CYCCNT) < 100)
+		{
+			;
+		}
+		GPIOC->BSRR = (1<<9);
+		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+		DWT->CYCCNT = 0;
+		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+		while ((DWT->CYCCNT) < 100)
+		{
+			;
+		}
+		GPIOC->BSRR = (1<<25);
+		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+		DWT->CYCCNT = 0;
+		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+		while ((DWT->CYCCNT) < 40000)
+		{
+			;
+		}
+		HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
+	}
+	__enable_irq();
+
   }
   /* USER CODE END 3 */
 }
