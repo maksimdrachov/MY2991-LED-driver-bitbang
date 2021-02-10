@@ -57,8 +57,10 @@
 
 /* External variables --------------------------------------------------------*/
 extern TIM_HandleTypeDef htim3;
-extern int TestArray[];
-extern short int TestCounter;
+//extern int TestArray[];
+//extern short int TestCounter;
+extern int InputArray[208];
+extern short int InputCounter;
 
 /* USER CODE BEGIN EV */
 
@@ -212,7 +214,7 @@ void TIM3_IRQHandler(void)
   //GPIOC->ODR ^= (1<<9);
   //GPIOC->ODR = ((TestArray[TestCounter])<<9);
 
-  if (TestArray[TestCounter] == 1)
+  if (InputArray[InputCounter] == 1)
   {
 	  GPIOC->BSRR = (1<<9);
   }
@@ -220,8 +222,8 @@ void TIM3_IRQHandler(void)
 	  GPIOC->BSRR = (1<<25);
 
 
-  TestCounter++;
-  TestCounter = TestCounter%8;
+  InputCounter++;
+  InputCounter = InputCounter%208;
 
   /* USER CODE END TIM3_IRQn 0 */
 

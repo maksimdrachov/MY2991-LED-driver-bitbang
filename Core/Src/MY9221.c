@@ -282,5 +282,19 @@ void Grayscale_Init(int *GrArr, int bs, int *ClrArr)
 	}
 }
 
+void InputArray_Init(int *InputArray, int *CMDArray, int *GrArr)
+{
+	int i;
+
+	for (i = 0; i < 192; ++i)
+	{
+		InputArray[i] = GrArr[i];
+	}
+	for (i = 192; i < 208; ++i)
+	{
+		InputArray[i] = CMDArray[i-192];
+	}
+}
+
 
 

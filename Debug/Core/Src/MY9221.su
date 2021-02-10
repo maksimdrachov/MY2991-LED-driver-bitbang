@@ -1,2 +1,3 @@
 MY9221.c:12:6:CMDArray_Init	24	static
 MY9221.c:238:6:Grayscale_Init	40	static
+MY9221.c:285:6:InputArray_Init	32	static

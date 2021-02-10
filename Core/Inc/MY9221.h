@@ -12,5 +12,6 @@
 
 void CMDArray_Init(int *, int, int, int, int, int, int, int, int);
 void Grayscale_Init(int *, int, int *);
+void InputArray_Init(int *, int *, int *);
 
 #endif /* INC_MY9221_H_ */

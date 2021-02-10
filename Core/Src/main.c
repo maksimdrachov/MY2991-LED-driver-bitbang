@@ -95,9 +95,12 @@ TIM_HandleTypeDef htim4;
 int CMDArray[16];
 int GrayscaleArray[192];
 int ColorArray[8] = {0,0,0,0,0,0,0,1}; //Make sure length matches selected grayscale!
+//int DataArray[208];
+int InputArray[208];
+short int InputCounter = 0;
 
-int TestArray[8]= {1,0,0,1,0,0,0,0};
-short int TestCounter = 0;
+//int TestArray[8]= {1,0,0,1,0,0,0,0};
+//short int TestCounter = 0;
 
 /* USER CODE END PV */
 
@@ -122,6 +125,7 @@ static void MX_TIM4_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+  //int DataArray[208];
 
   /* USER CODE END 1 */
 
@@ -133,6 +137,7 @@ int main(void)
   /* USER CODE BEGIN Init */
   CMDArray_Init(CMDArray, hspd, bs, gck, sep, osc, pol, cntset, onest);
   Grayscale_Init(GrayscaleArray, bs, ColorArray);
+  InputArray_Init(InputArray, CMDArray, GrayscaleArray);
 
   /* USER CODE END Init */
 
