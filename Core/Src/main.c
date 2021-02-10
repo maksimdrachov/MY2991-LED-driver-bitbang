@@ -96,7 +96,7 @@ int CMDArray[16];
 int GrayscaleArray[192];
 int ColorArray[8] = {0,0,0,0,0,0,0,1}; //Make sure length matches selected grayscale!
 
-int TestArray[8]= {1,1,0,0,0,0,0,0};
+int TestArray[8]= {1,0,0,1,0,0,0,0};
 short int TestCounter = 0;
 
 /* USER CODE END PV */

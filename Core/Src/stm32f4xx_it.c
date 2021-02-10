@@ -207,17 +207,29 @@ void SysTick_Handler(void)
   */
 void TIM3_IRQHandler(void)
 {
+  __HAL_TIM_CLEAR_IT(&htim3,TIM_IT_UPDATE);
   /* USER CODE BEGIN TIM3_IRQn 0 */
-  GPIOC->ODR ^= (1<<9);
+  //GPIOC->ODR ^= (1<<9);
   //GPIOC->ODR = ((TestArray[TestCounter])<<9);
-  //TestCounter++;
-  //TestCounter = TestCounter%8;
+
+  if (TestArray[TestCounter] == 1)
+  {
+	  GPIOC->BSRR = (1<<9);
+  }
+  else
+	  GPIOC->BSRR = (1<<25);
+
+
+  TestCounter++;
+  TestCounter = TestCounter%8;
 
   /* USER CODE END TIM3_IRQn 0 */
 
 
   /* USER CODE BEGIN TIM3_IRQn 1 */
-  __HAL_TIM_CLEAR_IT(&htim3,TIM_IT_UPDATE);
+  //__HAL_TIM_CLEAR_IT(&htim3,TIM_IT_UPDATE);
+
+
   /* USER CODE END TIM3_IRQn 1 */
 }
 
