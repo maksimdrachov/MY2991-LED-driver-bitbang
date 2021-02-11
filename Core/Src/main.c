@@ -110,6 +110,7 @@ static void MX_GPIO_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_TIM4_Init(void);
 /* USER CODE BEGIN PFP */
+void uS_Delay(int);
 
 /* USER CODE END PFP */
 
@@ -177,78 +178,23 @@ int main(void)
 		HAL_TIM_PWM_Stop(&htim4, TIM_CHANNEL_1);
 		GPIOD->ODR &= ~(1<<12);
 		//HAL_Delay(2);
-		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-		DWT->CYCCNT = 0;
-		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-		while ((DWT->CYCCNT) < 40000)
-		{
-			;
-		}
+		uS_Delay(40000);
 		//Toggle PC9 4 times;
-		GPIOC->BSRR = (1<<9);
-		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-		DWT->CYCCNT = 0;
-		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-		while ((DWT->CYCCNT) < 100)
-		{
-			;
-		}
+		uS_Delay(100);
 		GPIOC->BSRR = (1<<25);
-		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-		DWT->CYCCNT = 0;
-		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-		while ((DWT->CYCCNT) < 100)
-		{
-			;
-		}
+		uS_Delay(100);
 		GPIOC->BSRR = (1<<9);
-		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-		DWT->CYCCNT = 0;
-		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-		while ((DWT->CYCCNT) < 100)
-		{
-			;
-		}
+		uS_Delay(100);
 		GPIOC->BSRR = (1<<25);
-		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-		DWT->CYCCNT = 0;
-		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-		while ((DWT->CYCCNT) < 100)
-		{
-			;
-		}
+		uS_Delay(100);
 		GPIOC->BSRR = (1<<9);
-		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-		DWT->CYCCNT = 0;
-		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-		while ((DWT->CYCCNT) < 100)
-		{
-			;
-		}
+		uS_Delay(100);
 		GPIOC->BSRR = (1<<25);
-		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-		DWT->CYCCNT = 0;
-		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-		while ((DWT->CYCCNT) < 100)
-		{
-			;
-		}
+		uS_Delay(100);
 		GPIOC->BSRR = (1<<9);
-		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-		DWT->CYCCNT = 0;
-		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-		while ((DWT->CYCCNT) < 100)
-		{
-			;
-		}
+		uS_Delay(100);
 		GPIOC->BSRR = (1<<25);
-		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-		DWT->CYCCNT = 0;
-		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-		while ((DWT->CYCCNT) < 40000)
-		{
-			;
-		}
+		uS_Delay(40000);
 		HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
 	}
 	__enable_irq();
@@ -452,6 +398,16 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void uS_Delay(int delay)
+{
+	CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+	DWT->CYCCNT = 0;
+	DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+	while ((DWT->CYCCNT) < delay)
+	{
+		;
+	}
+}
 
 /* USER CODE END 4 */
 
